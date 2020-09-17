@@ -15,7 +15,7 @@ func closedIsland(grid [][]int) (ret int) {
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[i]); j++ {
 			if grid[i][j] == 0 {
-				ret += bfs(grid, i, j)
+				ret += dfs(grid, i, j)
 				printGrid(grid)
 			}
 		}
@@ -23,7 +23,7 @@ func closedIsland(grid [][]int) (ret int) {
 	return ret
 }
 
-func bfs(grid [][]int, i int, j int) (ret int) {
+func dfs(grid [][]int, i int, j int) (ret int) {
 	if i < 0 || j < 0 || i >= len(grid) || j >= len(grid[i]) {
 		return 0
 	}
@@ -35,7 +35,7 @@ func bfs(grid [][]int, i int, j int) (ret int) {
 	x := []int{0, 0, 1, -1}
 	y := []int{1, -1, 0, 0}
 	for k := 0; k < 4; k++ {
-		ret = min(ret, bfs(grid, i+x[k], j+y[k]))
+		ret = min(ret, dfs(grid, i+x[k], j+y[k]))
 	}
 	return ret
 }
