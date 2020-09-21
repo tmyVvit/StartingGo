@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+/// https://leetcode-cn.com/problems/redundant-connection-ii/solution/rong-yu-lian-jie-ii-by-leetcode-solution/
 // ugly solution !!
 func main() {
 	graph := [][]int{{4, 2}, {1, 5}, {5, 2}, {5, 3}, {2, 4}}
