@@ -18,7 +18,7 @@ func singleNumber(nums []int) []int {
 	for _, val := range nums {
 		mask ^= val
 	}
-	diff := mask & (-mask)
+	diff := mask & (-mask) // a & (-a) 可以得到a的最低非零位
 	var x int
 
 	for _, val := range nums {
