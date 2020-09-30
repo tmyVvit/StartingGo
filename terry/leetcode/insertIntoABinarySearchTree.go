@@ -20,5 +20,4 @@ func insertIntoBST(root *TreeNode, val int) *TreeNode {
 			node = node.Right
 		}
 	}
-
 }
