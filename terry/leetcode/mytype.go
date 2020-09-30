@@ -48,3 +48,19 @@ func PrintList(head *ListNode) {
 	}
 	fmt.Println()
 }
+
+// Min return the min of two int
+func Min(a int, b int) int {
+	if a > b {
+		return b
+	}
+	return a
+}
+
+// Max return the max or two int
+func Max(a int, b int) int {
+	if a < b {
+		return b
+	}
+	return a
+}
