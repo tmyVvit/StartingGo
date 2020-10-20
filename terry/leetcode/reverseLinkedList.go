@@ -16,7 +16,7 @@ func reverseList(head *ListNode) *ListNode {
 	return list
 }
 
-func reverseList(head *ListNode) *ListNode {
+func reverseList2(head *ListNode) *ListNode {
 	var prev *ListNode
 	next := head
 	for next != nil {
