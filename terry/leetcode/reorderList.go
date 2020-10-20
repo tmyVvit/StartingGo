@@ -20,3 +20,39 @@ func reorderList(head *ListNode) {
 	}
 	pre.Next = nil
 }
+
+func reorderList2(head *ListNode) {
+	if head == nil || head.Next == nil {
+		return
+	}
+	// 1. 分为左右两个链表
+	left, right := splitList(head)
+	// 2. 将右链表翻转
+	right = reverseList2(right)
+	// 3. 合并链表
+	mergeList(left, right)
+}
+
+func splitList(head *ListNode) (*ListNode, *ListNode) {
+	prev, slow, fast := head, head, head
+	for fast != nil && fast.Next != nil {
+		prev = slow
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	prev.Next = nil
+	return head, slow
+}
+
+func mergeList(left, right *ListNode) *ListNode {
+	list := &ListNode{Val: 0, Next: nil}
+	tlist, tleft, tright := list, left, right
+	for tleft != nil && tright != nil {
+		ltmp, rtmp := tleft.Next, tright.Next
+		tlist.Next = tleft
+		tlist.Next.Next = tright
+		tlist = tright
+		tleft, tright = ltmp, rtmp
+	}
+	return list.Next
+}
