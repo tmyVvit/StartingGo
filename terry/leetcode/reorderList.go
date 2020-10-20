@@ -1,6 +1,6 @@
 package leetcode
 
-func ReorderList(head *ListNode) {
+func reorderList(head *ListNode) {
 	arr := []*ListNode{}
 	for node := head; node != nil; node = node.Next {
 		arr = append(arr, node)

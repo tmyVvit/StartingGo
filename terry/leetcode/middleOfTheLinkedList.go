@@ -1,6 +1,6 @@
 package leetcode
 
-func MiddleNode(head *ListNode) *ListNode {
+func middleNode(head *ListNode) *ListNode {
 	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
