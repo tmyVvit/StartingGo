@@ -70,7 +70,7 @@ func maxProfitIII2(prices []int) int {
 	dp0 := [2][3]int{{0, 0, 0}, {-prices[0], -prices[0], -prices[0]}}
 	dp = append(dp, dp0)
 
-	for i := 0; i < days; i++ {
+	for i := 1; i < days; i++ {
 		dpi := [2][3]int{}
 		dpi[0][1] = max(dp[i-1][0][1], dp[i-1][1][0]+prices[i])
 		dpi[0][2] = max(dp[i-1][0][2], dp[i-1][1][1]+prices[i])
@@ -78,6 +78,5 @@ func maxProfitIII2(prices []int) int {
 		dpi[1][1] = max(dp[i-1][1][1], dp[i-1][0][1]-prices[i])
 		dp = append(dp, dpi)
 	}
-	return dp[days-1][0][2]
-
+	return max(dp[days-1][0][2], dp[days-1][0][1])
 }
