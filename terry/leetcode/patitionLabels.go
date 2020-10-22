@@ -81,3 +81,23 @@ func PartitionLabelsI(S string) (res []int) {
 	}
 	return res
 }
+
+// PartitionLablesII 使用了贪心算法
+// 首先遍历一边字符串，找到每个字符在字符串中最后出现的位置
+// 然后遍历第二遍字符串找到每个区间
+// ***每个区间的end坐标肯定大于等于该区间的字符的最后位置***
+func PartitionLablesII(S string) (res []int) {
+	endCh := make(map[rune]int)
+	for i := 0; i < len(S); i++ {
+		endCh[rune(S[i])] = i
+	}
+	start, end := 0, 0
+	for i := 0; i < len(S); i++ {
+		end = max(end, endCh[rune(S[i])])
+		if i == end {
+			res = append(res, i-start+1)
+			start = i + 1
+		}
+	}
+	return res
+}
