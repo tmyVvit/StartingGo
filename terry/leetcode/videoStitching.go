@@ -12,9 +12,6 @@ func VideoStitching(clips [][]int, T int) int {
 	}
 	pre, last, ret := 0, 0, 0
 	for i := 0; i < T; i++ {
-		if last >= T {
-			break
-		}
 		if last < maxn[i] {
 			last = maxn[i]
 		}
