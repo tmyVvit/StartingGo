@@ -1,5 +1,7 @@
 package leetcode
 
+import "strconv"
+
 func compress(chars []byte) int {
 	preCount, ind := 0, 0
 	var pre byte
@@ -40,4 +42,23 @@ func convertIntToByte(num int) (ret []byte) {
 		ret = append(ret, byte(num%10+'0'))
 	}
 	return ret
+}
+
+func CompressI(chars []byte) int {
+	pre, idx := 0, 0
+	for i := 1; i <= len(chars); i++ {
+		if i == len(chars) || chars[i-1] != chars[i] {
+			chars[idx] = chars[pre]
+			idx++
+			count := i - pre
+			if count > 1 {
+				for _, char := range strconv.Itoa(count) {
+					chars[idx] = byte(char)
+					idx++
+				}
+			}
+			pre = i
+		}
+	}
+	return idx
 }
