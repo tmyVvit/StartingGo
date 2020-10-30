@@ -54,7 +54,7 @@ func preorderTraversalI(root *TreeNode) (res []int) {
 }
 
 // 也使用迭代的方法，利用一个栈
-func PreorderTraversalII(root *TreeNode) (res []int) {
+func preorderTraversalII(root *TreeNode) (res []int) {
 	stack := []*TreeNode{}
 	node := root
 	for node != nil || len(stack) > 0 {
