@@ -65,11 +65,11 @@ func dfsToGetPerimeter(x int, y int, grid [][]int) int {
 }
 
 // 直接遍历
-func IslandPerimeterII(grid [][]int) int {
+func islandPerimeterII(grid [][]int) int {
 	row, col := len(grid), len(grid[0])
 	ret := 0
 	for i := 0; i < row; i++ {
-		for j := 0; j < row; j++ {
+		for j := 0; j < col; j++ {
 			if grid[i][j] == 1 {
 				if i-1 < 0 || grid[i-1][j] == 0 {
 					ret++
