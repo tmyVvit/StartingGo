@@ -1,6 +1,6 @@
 package leetcode
 
-func TrailingZeroes(n int) int {
+func trailingZeroes(n int) int {
 	five, two := 0, 0
 	for i := 2; i <= n; i++ {
 		for tmp := i; tmp%2 == 0; tmp /= 5 {
@@ -13,7 +13,7 @@ func TrailingZeroes(n int) int {
 	return min(two, five)
 }
 
-func TrailingZeroesI(n int) int {
+func trailingZeroesI(n int) int {
 	five := 0
 	for i := 5; i <= n; i += 5 {
 		for tmp := i; tmp%5 == 0; tmp = tmp / 5 {

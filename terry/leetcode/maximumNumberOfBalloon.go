@@ -2,7 +2,7 @@ package leetcode
 
 import "math"
 
-func MaxNumberOfBalloons(text string) int {
+func maxNumberOfBalloons(text string) int {
 	table := make(map[rune]int)
 	for _, ch := range text {
 		table[rune(ch)] = table[rune(ch)] + 1
