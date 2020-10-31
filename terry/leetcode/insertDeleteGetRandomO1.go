@@ -2,45 +2,49 @@ package leetcode
 
 import "math/rand"
 
+// RandomizedSet it a truct that can insert, remove and get rancom number in it
+// with O(1) in time
 type RandomizedSet struct {
 	table map[int]int
 	list  []int
 }
 
-/** Initialize your data structure here. */
-func Constructor() RandomizedSet {
-	return RandomizedSet{make(map[int]int), []int{}}
+// NewRandomSet return a new empty RandomizedSet
+func NewRandomSet() *RandomizedSet {
+	return &RandomizedSet{make(map[int]int), []int{}}
 }
 
-/** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
-func (this *RandomizedSet) Insert(val int) bool {
-	if _, ok := this.table[val]; ok {
+// Insert a val into set
+// return true if insert success, false if failed
+func (rset *RandomizedSet) Insert(val int) bool {
+	if _, ok := rset.table[val]; ok {
 		return false
 	}
-	this.table[val] = len(this.list)
-	this.list = append(this.list, val)
+	rset.table[val] = len(rset.list)
+	rset.list = append(rset.list, val)
 	return true
 
 }
 
-/** Removes a value from the set. Returns true if the set contained the specified element. */
-func (this *RandomizedSet) Remove(val int) bool {
-	if _, ok := this.table[val]; !ok {
+// Remove a val in the set
+// true if remove success and false if failed
+func (rset *RandomizedSet) Remove(val int) bool {
+	if _, ok := rset.table[val]; !ok {
 		return false
 	}
-	tmp := this.table[val]
-	last := this.list[len(this.list)-1]
-	this.table[last] = tmp
-	this.list[tmp] = last
-	this.list = this.list[:len(this.list)-1]
-	this.table[val] = -1
+	tmp := rset.table[val]
+	last := rset.list[len(rset.list)-1]
+	rset.table[last] = tmp
+	rset.list[tmp] = last
+	rset.list = rset.list[:len(rset.list)-1]
+	rset.table[val] = -1
 	return true
 
 }
 
-/** Get a random element from the set. */
-func (this *RandomizedSet) GetRandom() int {
-	return this.list[rand.Intn(len(this.list))]
+// GetRandom can get a random number in set
+func (rset *RandomizedSet) GetRandom() int {
+	return rset.list[rand.Intn(len(rset.list))]
 }
 
 /**
