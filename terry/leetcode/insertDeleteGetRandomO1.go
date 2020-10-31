@@ -2,7 +2,7 @@ package leetcode
 
 import "math/rand"
 
-// RandomizedSet it a truct that can insert, remove and get rancom number in it
+// RandomizedSet it a struct that can insert, remove and get rancom number in it
 // with O(1) in time
 type RandomizedSet struct {
 	table map[int]int
