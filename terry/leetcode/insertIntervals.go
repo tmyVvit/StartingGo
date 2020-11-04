@@ -1,9 +1,6 @@
 package leetcode
 
 func insertIntervals(intervals [][]int, newInterval []int) (ret [][]int) {
-	if len(intervals) == 0 {
-		return append(intervals, newInterval)
-	}
 	start, end := newInterval[0], newInterval[1]
 	for i := 0; i < len(intervals); i++ {
 		if start <= intervals[i][1] { //  注意不能用start <= intervals[i][0],因为当start > intervals[i][0]时可能start <= intervals[i][1]，此时也是有交集的
