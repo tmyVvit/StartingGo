@@ -26,7 +26,7 @@ func findItinerary(tickets [][]string) (res []string) {
 		// for循环结束后才入栈，则最后返回的先入栈
 		res = append(res, from)
 	}
-	dfs("JKS")
+	dfs("JFK")
 	length := len(res)
 	for i := 0; i <= (length-1)/2; i++ {
 		res[i], res[length-1-i] = res[length-1-i], res[i]
