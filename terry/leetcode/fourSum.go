@@ -10,6 +10,8 @@ type twoSum struct {
 	a, b int
 }
 
+// 循环计算两个数的和 a+b， 将 a+b放入map中，并检查 target - a - b是否在map中
+// 如果在，则加入答案中（注意重复）
 func fourSum(nums []int, target int) (ret [][]int) {
 	if len(nums) == 0 {
 		return [][]int{}
