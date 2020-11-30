@@ -1,5 +1,7 @@
 package leetcode
 
+import "sort"
+
 type runecount struct {
 	ch    rune
 	count int
@@ -13,12 +15,13 @@ func reorganizeString(S string) string {
 	}
 
 	list := []runecount{}
-	maxCount := 0
 	for key, val := range table {
 		list = append(list, runecount{key, val})
-		maxCount = max(maxCount, val)
 	}
-	if maxCount > (length+1)/2 {
+	sort.Slice(list, func(a, b int) bool {
+		return list[a].count > list[b].count
+	})
+	if list[0].count > (length+1)/2 {
 		return ""
 	}
 	ret := make([]rune, length)
