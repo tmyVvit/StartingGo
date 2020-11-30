@@ -6,7 +6,7 @@ package leetcode
 // [4,5,6]
 //  ^
 
-func merge(nums1 []int, m int, nums2 []int, n int) {
+func mergeSortedArray(nums1 []int, m int, nums2 []int, n int) {
 	for i := m - 1; i >= 0; i-- {
 		nums1[n+i] = nums1[i]
 	}
