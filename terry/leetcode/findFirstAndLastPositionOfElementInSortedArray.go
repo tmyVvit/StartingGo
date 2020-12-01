@@ -3,6 +3,9 @@ package leetcode
 // 两次二分查找
 func searchRange(nums []int, target int) (ret []int) {
 	length := len(nums)
+	if length == 0 || target < nums[0] || target > nums[length-1] {
+		return []int{-1, -1}
+	}
 	start, end := 0, length-1
 	for start < end {
 		mid := (start + end) / 2
