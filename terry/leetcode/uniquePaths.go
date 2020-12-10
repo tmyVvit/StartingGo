@@ -17,6 +17,20 @@ func uniquePaths(m int, n int) int {
 			}
 		}
 	}
-
 	return dp[m-1][n-1]
+}
+
+// 可以只使用一个一维数组实现
+func uniquePathsI(m int, n int) int {
+	if m == 0 || n == 0 {
+		return 0
+	}
+	dp := make([]int, n)
+	dp[0] = 1
+	for i := 0; i < m; i++ {
+		for j := 1; j < n; j++ {
+			dp[j] += dp[j-1]
+		}
+	}
+	return dp[n-1]
 }
