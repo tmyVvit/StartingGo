@@ -1,5 +1,34 @@
 package leetcode
 
+// MonotoneIncreasingDigitsI
+func MonotoneIncreasingDitigsI(N int) int {
+	if N < 10 {
+		return N
+	}
+	// 123 -> []int{3,2,1}
+	numberArr := int2arr(N)
+	var i int
+	// 找到不是递增的那一位
+	for i = len(numberArr) - 1; i > 0; i-- {
+		if numberArr[i-1] < numberArr[i] {
+			break
+		}
+	}
+	if i > 0 {
+		for i < len(numberArr) && numberArr[i-1] < numberArr[i] {
+			numberArr[i]--
+			i++
+		}
+		// 因为上面循环最后有一个i++，所以找到减1那位数的后一位 需要 i-2
+		i -= 2
+		for i >= 0 {
+			numberArr[i] = 9
+			i--
+		}
+	}
+	return arr2int(numberArr)
+}
+
 // MonotoneIncreasingDigits 返回小于等于给定数的最大整数，该整数满足各个位置上的数字单调递增
 //回溯 + 递归
 func MonotoneIncreasingDigits(N int) int {
